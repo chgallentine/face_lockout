@@ -33,7 +33,7 @@ while True:
 			counts = {}
 
 			for i in matchedIdxs:
-				name = data["people"][i]
+				name = data["names"][i]
 				counts[name] = counts.get(name, 0) + 1
 
 			name = max(counts, key=counts.get)
