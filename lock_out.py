@@ -8,11 +8,15 @@ import pickle
 import cv2
 import time
 import os
+from pygame import mixer
 
 data = pickle.loads(open("encodings.pickle", "rb").read())
 
 camera = cv2.VideoCapture(0)
 time.sleep(1)
+
+mixer.init()
+mixer.music.load("./Police_Siren.mp3")
 
 while True:
 	return_value, image = camera.read()
@@ -40,9 +44,11 @@ while True:
 		
 		people.append(name)
 
-	if ("charlie_gallentine" not in people) and ("Unknown" in people):
+	if ("charlie_gallentine" not in people):
+		# mixer.music.play()
 		os.system("/System/Library/CoreServices/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine")
-
+	# else:
+	# 	mixer.music.stop()
 
 
 
